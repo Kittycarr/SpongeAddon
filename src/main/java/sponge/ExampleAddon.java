@@ -1,7 +1,8 @@
-package btw.community.example;
+package sponge;
 
 import btw.AddonHandler;
 import btw.BTWAddon;
+import sponge.blocksSponge.SpongeBlocks;
 
 public class ExampleAddon extends BTWAddon {
     private static ExampleAddon instance;
@@ -13,5 +14,8 @@ public class ExampleAddon extends BTWAddon {
     @Override
     public void initialize() {
         AddonHandler.logMessage(this.getName() + " Version " + this.getVersionString() + " Initializing...");
+
+        SpongeBlocks.initBlocks();
+        SpongeRecipes.initRecipes();
     }
 }

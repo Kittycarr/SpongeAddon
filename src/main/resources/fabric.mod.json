@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "three",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "SpongeAddon",
+  "description": "Who lives in a pineapple under the sea?",
   "authors": [
-    "Me!"
+    "kittycat8332 (discord)"
   ],
   "contact": {
     "homepage": "https://legacyfabric.net/",
@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "sponge.ExampleMod"
     ],
     "btw:addon": [
-      "btw.community.example.ExampleAddon"
+      "sponge.ExampleAddon"
     ]
   },
   "custom": {
