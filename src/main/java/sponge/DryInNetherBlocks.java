@@ -10,14 +10,30 @@ import static sponge.DryInNetherCraftingManager.hasDryInNetherRecipe;
 
 public class DryInNetherBlocks extends Block {
 
+
     public boolean doShowParticlesWhenDried(){
         return true;
     }
 
-    public void spawnParticles(World world, int i, int j, int k){
-        j++;
+    @Override
+    public void randomDisplayTick(World world, int i, int j, int k, Random random) {
+        super.randomDisplayTick(world, i, j, k, random);
+        for (int count = 0; count < 10; ++count) {
+            spawnParticles(world, i, j, k, random);
+        }
+    }
+
+
+    public void spawnParticles(World world, int i, int j, int k, Random random){
+        float offsetI = random.nextFloat();
+        float offsetJ = 1-random.nextFloat();
+        float offsetK = random.nextFloat();
+        float smokeX = (float)i + offsetI;
+        float smokeY = (float)j + offsetJ;
+        float smokeZ = (float)k + offsetK;
+
         if (doShowParticlesWhenDried()) {
-        world.spawnParticle("smoke", i, j, k, 0.0, 0.02, 0.0);
+            world.spawnParticle("largesmoke", smokeX, smokeY, smokeZ, 0.0, 0.05, 0.0);
         }
     }
 
@@ -83,7 +99,9 @@ public class DryInNetherBlocks extends Block {
         if (this.canBlockBeCooked(world, i, j, k)) {
             if (iOldCookCounter >= 15) {
                     this.cookBlock(world, i, j, k);
-            } else {iNewCookCounter = iOldCookCounter + 1;this.scheduleUpdateBasedOnCookState(world, i, j, k);}
+            } else {
+                iNewCookCounter = iOldCookCounter + 1;this.scheduleUpdateBasedOnCookState(world, i, j, k);
+            }
         } else {
             this.scheduleUpdateBasedOnCookState(world, i, j, k);
         }
@@ -121,7 +139,6 @@ public class DryInNetherBlocks extends Block {
     public void onDriedInNether(World world, int i, int j, int k) {
         Block outputs = this.getOutputsWhenDriedInNether(world, i, j, k);
         if (outputs != null) {
-            spawnParticles(world,i,j,k);
             world.setBlockWithNotify(i,j,k,outputs.blockID);
         }
     }
