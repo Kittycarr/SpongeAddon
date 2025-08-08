@@ -2,7 +2,6 @@ package sponge;
 
 import btw.AddonHandler;
 import btw.BTWAddon;
-import net.minecraft.src.World;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sponge.blocksSponge.SpongeBlocks;

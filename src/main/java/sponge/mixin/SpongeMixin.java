@@ -5,8 +5,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import sponge.blocksSponge.SpongeBlocks;
 
-import java.util.Objects;
-
 
 import static net.minecraft.src.Block.*;
 

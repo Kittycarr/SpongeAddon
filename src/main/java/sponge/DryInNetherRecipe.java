@@ -1,10 +1,6 @@
 package sponge;
 
-import btw.crafting.recipe.types.KilnRecipe;
 import net.minecraft.src.Block;
-import net.minecraft.src.ItemStack;
-
-import java.util.Arrays;
 
 public class DryInNetherRecipe {
 

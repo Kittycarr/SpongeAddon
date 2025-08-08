@@ -1,6 +1,5 @@
 package sponge;
 
-import btw.crafting.manager.KilnCraftingManager;
 import btw.crafting.recipe.RecipeManager;
 import btw.item.BTWItems;
 

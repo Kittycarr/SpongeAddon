@@ -31,9 +31,10 @@ public class DryInNetherBlocks extends Block {
         float smokeX = (float)i + offsetI;
         float smokeY = (float)j + offsetJ;
         float smokeZ = (float)k + offsetK;
-
-        if (doShowParticlesWhenDried()) {
-            world.spawnParticle("largesmoke", smokeX, smokeY, smokeZ, 0.0, 0.05, 0.0);
+        if (world.provider.dimensionId == -1) {
+            if (doShowParticlesWhenDried()) {
+                world.spawnParticle("largesmoke", smokeX, smokeY, smokeZ, 0.0, 0.05, 0.0);
+            }
         }
     }
 
