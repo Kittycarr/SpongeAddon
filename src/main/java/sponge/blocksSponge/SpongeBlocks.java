@@ -11,7 +11,7 @@ public class SpongeBlocks {
     public static Block wetSponge;
 
     public static void initBlocks() {
-        wetSponge = new BlockWetSponge(wetSpongeID).setTextureName("wetSponge.png").setUnlocalizedName("wetSponge").setHardness(0.6f).setStepSound(soundGrassFootstep);
+        wetSponge = new BlocksWetSponge(wetSpongeID).setTextureName("wetSponge.png").setUnlocalizedName("wetSponge").setHardness(0.6f).setStepSound(soundGrassFootstep);
         initBlockItems(wetSpongeID);
     }
     public static void initBlockItems(int blockID) {

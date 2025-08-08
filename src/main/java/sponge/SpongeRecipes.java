@@ -1,5 +1,6 @@
 package sponge;
 
+import btw.crafting.manager.KilnCraftingManager;
 import btw.crafting.recipe.RecipeManager;
 import btw.item.BTWItems;
 
@@ -21,5 +22,20 @@ public class SpongeRecipes {
                 'D', new ItemStack(BTWItems.straw)
         });
         RecipeManager.addKilnRecipe(new ItemStack(Block.sponge), SpongeBlocks.wetSponge);
+
+        addDryInNetherRecipe(Block.sponge, SpongeBlocks.wetSponge,(byte) 2);
+    }
+
+
+    public static void addDryInNetherRecipe(Block output, Block block, byte cookTimeMultiplier) {
+        addDryInNetherRecipe(output, block, Short.MAX_VALUE, cookTimeMultiplier);
+    }
+
+    public static void addDryInNetherRecipe(Block output, Block block, int metadata, byte cookTimeMultiplier) {
+        addDryInNetherRecipe(output, block, new int[]{metadata}, cookTimeMultiplier);
+    }
+
+    public static void addDryInNetherRecipe(Block output, Block block, int[] metadatas, byte cookTimeMultiplier) {
+        DryInNetherCraftingManager.instance.addRecipe(output, block, metadatas, cookTimeMultiplier);
     }
 }

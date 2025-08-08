@@ -2,9 +2,13 @@ package sponge;
 
 import btw.AddonHandler;
 import btw.BTWAddon;
+import net.minecraft.src.World;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import sponge.blocksSponge.SpongeBlocks;
 
 public class ExampleAddon extends BTWAddon {
+    private static final Logger log = LogManager.getLogger(ExampleAddon.class);
     private static ExampleAddon instance;
 
     public ExampleAddon() {
@@ -17,5 +21,6 @@ public class ExampleAddon extends BTWAddon {
 
         SpongeBlocks.initBlocks();
         SpongeRecipes.initRecipes();
+
     }
 }
