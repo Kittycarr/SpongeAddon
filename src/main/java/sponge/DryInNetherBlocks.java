@@ -10,7 +10,6 @@ import static sponge.DryInNetherCraftingManager.hasDryInNetherRecipe;
 
 public class DryInNetherBlocks extends Block {
 
-
     public boolean doShowParticlesWhenDried(){
         return true;
     }
@@ -37,11 +36,6 @@ public class DryInNetherBlocks extends Block {
             }
         }
     }
-
-    public static DryInNetherBlocks staticDryInNetherBlocks;
-
-    @Environment(value=EnvType.CLIENT)
-    private Icon[] cookIcons;
 
     protected DryInNetherBlocks(int par1, Material par2Material) {
         super(par1, par2Material);
@@ -149,39 +143,9 @@ public class DryInNetherBlocks extends Block {
         return DryInNetherCraftingManager.instance.getRecipeResult(this, metadata);
     }
 
-    @Override
-    @Environment(value= EnvType.CLIENT)
-    public void registerIcons(IconRegister register) {
-        this.cookIcons = new Icon[7];
-        for (int i = 0; i < 7; ++i) {
-            this.cookIcons[i] = register.registerIcon("btw:kiln_cooking_overlay_" + (i + 1));
-        }
-    }
-
-
-    @Environment(value=EnvType.CLIENT)
-    public Icon getCookTextureForCurrentState(IBlockAccess blockAccess, int i, int j, int k) {
-        int iTextureIndex = this.getCookCounter(blockAccess, i, j, k) / 2 - 1;
-        if (iTextureIndex >= 0 && iTextureIndex <= 6) {
-            return this.cookIcons[iTextureIndex];
-        }
-        return null;
-    }
-
     public final boolean getCanBeDriedInNether(IBlockAccess blockAccess, int i, int j, int k) {
         int metadata = blockAccess.getBlockMetadata(i, j, k);
         return DryInNetherCraftingManager.instance.getRecipeResult(this, metadata) != null;
-    }
-
-    @Environment(value= EnvType.CLIENT)
-    public void renderDryingInNether(RenderBlocks renderBlocks, int i, int j, int k, boolean bFirstPassResult) {
-        if (bFirstPassResult && hasDryInNetherRecipe[this.blockID]) {
-            Icon overlayTexture;
-            IBlockAccess blockAccess = renderBlocks.blockAccess;
-            if (!renderBlocks.hasOverrideBlockTexture() && getCanBeDriedInNether(blockAccess, i, j, k) && (overlayTexture = this.getCookTextureForCurrentState(blockAccess, i, j , k)) != null) {
-                this.renderBlockWithTexture(renderBlocks, i, j, k, overlayTexture);
-            }
-        }
     }
 
 }
