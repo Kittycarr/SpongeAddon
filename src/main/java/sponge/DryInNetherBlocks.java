@@ -22,7 +22,6 @@ public class DryInNetherBlocks extends Block {
         }
     }
 
-
     public void spawnParticles(World world, int i, int j, int k, Random random){
         float offsetI = random.nextFloat();
         float offsetJ = 1-random.nextFloat();

@@ -9,12 +9,18 @@ import sponge.blocksSponge.SpongeBlocks;
 import static net.minecraft.src.Block.*;
 
 @Mixin (BlockSponge.class)
-public class SpongeMixin {
-    @Unique
+public class SpongeMixin extends Block {
+
+    protected SpongeMixin(int par1, Material par2Material) {
+        super(par1, par2Material);
+    }
+
+    @Override
     public void onNeighborBlockChange(World world, int i, int j, int k, int iBlockID) {
         becomeWet(world, i, j, k);
     }
-    @Unique
+
+    @Override
     public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
         becomeWet(world, i, j, k);
     }
